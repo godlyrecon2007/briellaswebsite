@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HTML: website</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+    }
+
+#playerBox { position: fixed; left: 90px; width: 360px; }
+#playlist { max-height: 220px; overflow-y: auto; }
+
+
+    #playerBox{
+  position: fixed;
+  top: 200px;
+  left: 250px;
+
+  width: 500px;
+  height: 600px;
+
+  padding: 14px;
+  box-sizing: border-box;
+  z-index: 5;
+
+  background: rgba(0,0,0,0.75);
+  border: 3px solid red;
+  box-shadow: 0 0 18px rgba(255,0,0,0.35);
+}
+
+#playerZebra{
+  height: 18px;
+  background-image: url("images/zebra.jpg");
+  background-size: 40px 40px;
+  background-repeat: repeat-x;
+  margin-bottom: 12px;
+}
+
+#playerTitle{
+  color: red;
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#playerBox audio{
+  width: 100%;
+  margin-bottom: 12px;
+  filter: hue-rotate(164deg) saturate(2) contrast(1.2)
+}
+
+#playlist{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(255,0,0,0.35);
+  padding-top: 10px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+#playlist li{
+  padding: 8px 8px;
+  color: #ffb3b3;
+  cursor: pointer;
+  border: 1px solid rgba(255,0,0,0.15);
+  margin-bottom: 8px;
+  background: rgba(255,0,0,0.06);
+}
+
+#playlist li:hover{
+  background: rgba(255,0,0,0.18);
+  box-shadow: 0 0 14px rgba(255,0,0,0.35);
+}
+
+#playlist li.active{
+  background: rgba(255,0,0,0.25);
+  border-color: rgba(255,0,0,0.5);
+  color: #ffd1d1;
+}
+
+
+    .zebra {
+      position: fixed;
+      background-image: url("images/zebra.jpg");
+      background-size: 40px 40px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #zebraTop {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-repeat: repeat-x;
+    }
+
+    #zebraBottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-repeat: repeat-x;
+    }
+
+    #zebraLeft {
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 100%;
+      background-repeat: repeat-y;
+    }
+
+    #zebraRight {
+      top: 0;
+      right: -20px;
+      width: 60px;
+      height: 100%;
+      background-repeat: repeat-y;
+    }
+
+    
+    #blinkie2 {
+      position: fixed;
+      top: 100px;
+      right: 0px;
+      transform: translateX(-50%);
+      z-index: 6;
+    }
+
+    
+    
+    
+    #artBox {
+  position: fixed;
+  top: 200px;                 
+  right: -48px;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 600px;
+
+  border: 3px solid red;
+  padding: 20px;
+  box-sizing: border-box;
+
+  overflow-y: auto;           
+  overflow-x: hidden;
+
+  background: rgba(0,0,0,0.6);
+  z-index: 5;
+
+  box-shadow:
+    0 0 20px rgba(255, 0, 0, 0.45),
+    inset 0 0 18px rgba(255, 0, 0, 0.18);
+    }
+
+    
+    #artBox .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 40px 80px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    #artBox img {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #artBox a img {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    #artBox a:hover img {
+      transform: scale(1.05);
+      box-shadow: 
+      0 0 10px rgba(300, 0, 0, 0.9);
+
+    }
+  </style>
+</head>
+
+<body>
+<div id="playerBox">
+  <div id="playerZebra"></div>
+  <div id="playerTitle">BANGERS</div>
+
+  <audio id="audio" controls></audio>
+
+  <ul id="playlist">
+    <li data-src="music/1979.mp3" class="active">Smashing Pumpkins – 1979</li>
+    <li data-src="music/beneath_the_remains.mp3">Sepultura – Beneath the Remains</li>
+    <li data-src="music/black.mp3">Pearl Jam – Black</li>
+    <li data-src="music/bleed_me_an_ocean.mp3">Acid Bath – Bleed Me an Ocean</li>
+    <li data-src="music/contempt_of_cop.mp3">Sunami – Contempt of Cop</li>
+    <li data-src="music/glass.mp3">Incubus - Glass</li>
+    <li data-src="music/gold.mp3">GZA - Gold</li>
+    <li data-src="music/haitian_frustration.mp3">The Toasters - Haitian Frustration</li>
+    <li data-src="music/old_dog.mp3">The Slackers - Old Dog</li>
+    <li data-src="music/possum_kingdom.mp3">Toadies - Possum Kingdom</li>
+    <li data-src="music/prison_of_love.mp3">Hepcat - Prison Of Love</li>
+    <li data-src="music/the_survivor.mp3">The St. Vitus Dancers - The Survivor</li>
+
+  </ul>
+</div>
+
+  <div id="zebraTop" class="zebra"></div>
+  <div id="zebraBottom" class="zebra"></div>
+  <div id="zebraLeft" class="zebra"></div>
+  <div id="zebraRight" class="zebra"></div>
+
+  <img src="images/blinkie2.gif" id="blinkie2" alt="Gallery">
+
+  <div id="artBox">
+    <div class="grid">
+      
+      <a href="art1.html" alt="black">
+      <img src="images/art1.jpg" alt="black">
+      </a>
+      <a href="art2.html" alt="news">
+      <img src="images/art2.jpg" alt="news">
+      </a>
+      <a href="art3.html" alt="girl">
+      <img src="images/art3.jpg" alt="girl">
+      </a>
+      <a href="art4.html" alt="bny">
+      <img src="images/art4.jpg" alt="bny">
+      </a>
+      <a href="art5.html" alt="owl">
+      <img src="images/art5.jpg" alt="owl">
+      </a>
+      <a href="art6.html" alt="chain">
+      <img src="images/art6.jpg" alt="chain">
+      </a>
+    </div>
+  </div>
+
+<script>
+  const audio = document.getElementById("audio");
+  const playlist = document.getElementById("playlist");
+
+  audio.addEventListener("error", () => {
+    console.log("Audio error:", audio.error);
+    alert("Could not play: " + audio.src);
+  });
+
+  const first = playlist.querySelector("li");
+  if (first) audio.src = first.dataset.src;
+
+  playlist.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
+
+    playlist.querySelectorAll("li").forEach(x => x.classList.remove("active"));
+    li.classList.add("active");
+
+    audio.src = li.dataset.src;
+    audio.load();
+    audio.play();
+  });
+</script>
+
+</body>
+</html>
